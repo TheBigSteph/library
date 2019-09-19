@@ -2,6 +2,8 @@ let myLibrary = [{title: '100 Años de Soledad', author: 'Gabriel García Márqu
 {title: 'El Túnel', author: 'Ernesto Sábato', numberOfPages: 471, alreadyRead: true},
 {title: 'El Coronel no tiene quien le escriba', author: 'Ernesto Sábato', numberOfPages: 471, alreadyRead: true}];
 
+const BookAdd = document.getElementById('add-book')
+
 function Book( title, author, numberOfPages, alreadyRead=false) {
     this.title = title;
     this.author = author;
@@ -10,7 +12,12 @@ function Book( title, author, numberOfPages, alreadyRead=false) {
   }
 
 function addBookToLibrary() {
-  this.Book()
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
+  const pages = document.getElementById('pages').value;
+  const createBook = new Book(title, author, pages);
+  myLibrary.push(createBook);
+  render();
 }
 
 function render(){
@@ -44,5 +51,7 @@ function addDiv(id= ""){
   createDiv.id = id;
   return createDiv;
 }
+
+
 
 render();
