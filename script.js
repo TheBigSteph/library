@@ -12,7 +12,7 @@ function Book( title, author, numberOfPages, alreadyRead=false) {
   }
 
 function addBookToLibrary() {
-  removeContentDivbyId('library');
+  resetDivbyId('library');
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const pages = document.getElementById('pages').value;
@@ -26,13 +26,22 @@ function addBookToLibrary() {
   // const bk = new Book(title, author, pages, alreadyRead=false);
   // myLibrary.push(bk);
   // console.log(myLibrary);
+  resetForm('form-book');
   render();
 }
 
-function removeContentDivbyId(nameId) {
+function resetForm(nameId) {
+  document.getElementById(nameId).reset();
+}
+
+function resetDivbyId(nameId) {
   let id = document.getElementById(nameId);
   id.innerHTML = '';
 }
+
+// function resetForm() {
+//   document.getElementById('form-input').reset();
+// }
 
 function render(){
   
