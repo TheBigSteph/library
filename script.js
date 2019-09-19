@@ -10,7 +10,13 @@ function Book( title, author, numberOfPages, alreadyRead=false) {
   }
 
 function addBookToLibrary() {
-  this.Book()
+  const title = $('#title').val();
+  const author = $('#author').val();
+  const pages = $('#pages').val();
+  const bk = new Book(title, author, pages, alreadyRead=false);
+  myLibrary.push(bk);
+  console.log(myLibrary);
+  render();
 }
 
 function render(){
