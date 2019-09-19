@@ -12,6 +12,7 @@ function Book( title, author, numberOfPages, alreadyRead=false) {
   }
 
 function addBookToLibrary() {
+  removeContentDivbyId('library');
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const pages = document.getElementById('pages').value;
@@ -28,13 +29,20 @@ function addBookToLibrary() {
   render();
 }
 
+function removeContentDivbyId(nameId) {
+  let id = document.getElementById(nameId);
+  id.innerHTML = '';
+}
+
 function render(){
   
    let node = document.getElementById('library');
+   console.log(node.childNodes);
    myLibrary.forEach(book => {
     node.appendChild(addDiv(book.title));
     let newDiv = document.getElementById(book.title);
     AddInfo(newDiv,book)
+    
    });
  
 }
