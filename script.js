@@ -30,6 +30,12 @@ function addBookToLibrary() {
   render();
 }
 
+function removeBookFromLibrary(index) {
+  myLibrary.splice(index,1);
+  resetDivbyId('library');
+  render();
+}
+
 function resetForm(nameId) {
   document.getElementById(nameId).reset();
 }
@@ -47,24 +53,23 @@ function render(){
   
    let node = document.getElementById('library');
    console.log(node.childNodes);
-   myLibrary.forEach(book => {
+   myLibrary.forEach((book, index) => {
     node.appendChild(addDiv(book.title));
     let newDiv = document.getElementById(book.title);
-    AddInfo(newDiv,book)
+    AddInfo(newDiv,book, index)
     
    });
  
 }
 
-function AddInfo(div, book){
+function AddInfo(div, book, index){
   div.innerHTML = `<div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">Title Book: ${book.title}</h5>
     <h6 class="card-subtitle mb-2 text-muted">Author: ${book.author}</h6>
     <p class="card-text">Pages: ${book.numberOfPages}</p>
     <p class="card-text">Read: ${book.alreadyRead}</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+    <a href="#" class="card-link" onclick="removeBookFromLibrary(${index});">Delete Book</a>
   </div>
 </div>`;
   
