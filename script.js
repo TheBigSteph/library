@@ -36,6 +36,11 @@ function removeBookFromLibrary(index) {
   resetDivbyId('library');
   render();
 }
+function editBookFromLibrary(index) {
+  myLibrary[index].alreadyRead == 'Unread' ? myLibrary[index].alreadyRead = 'Read': myLibrary[index].alreadyRead = 'Unread';
+  resetDivbyId('library');
+  render();
+}
 
 function resetForm(nameId) {
   document.getElementById(nameId).reset();
@@ -69,12 +74,14 @@ function AddInfo(div, book, index){
     <h5 class="card-title">Title Book: ${book.title}</h5>
     <h6 class="card-subtitle mb-2 text-muted">Author: ${book.author}</h6>
     <p class="card-text">Pages: ${book.numberOfPages}</p>
-    <p class="card-text">Read: ${book.alreadyRead}</p>
+    <p class="card-text">Read: ${book.alreadyRead} <span><a href="#" class="card-link" onclick="editBookFromLibrary(${index});">Edit</a></span></p>
     <a href="#" class="card-link" onclick="removeBookFromLibrary(${index});">Delete Book</a>
   </div>
 </div>`;
   
 }
+
+
 
 function addDiv(id= ""){
   let createDiv = document.createElement('div');
