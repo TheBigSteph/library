@@ -1,6 +1,7 @@
-let myLibrary = [{title: '100 Años de Soledad', author: 'Gabriel García Márquez', numberOfPages: 471, alreadyRead: 'Read'}, 
+let myLibrary = JSON.parse(localStorage.getItem('library')) || [{title: '100 Años de Soledad', author: 'Gabriel García Márquez', numberOfPages: 471, alreadyRead: 'Read'}, 
 {title: 'El Túnel', author: 'Ernesto Sábato', numberOfPages: 471, alreadyRead: "Unread"},
 {title: 'El Coronel no tiene quien le escriba', author: 'Ernesto Sábato', numberOfPages: 471, alreadyRead: "Read"}];
+// localStorage.setItem('library', JSON.stringify(myLibrary));
 
 const BookAdd = document.getElementById('add-book')
 
@@ -19,6 +20,8 @@ function addBookToLibrary() {
   const read = document.getElementById('read').value;
   const createBook = new Book(title, author, pages, read);
   myLibrary.push(createBook);
+  localStorage.setItem('library', JSON.stringify(myLibrary));
+
 
 // CODE Stephane
   // const title = $('#title').val();
@@ -59,7 +62,8 @@ function render(){
   
    let node = document.getElementById('library');
    console.log(node.childNodes);
-   myLibrary.forEach((book, index) => {
+   locale = JSON.parse(localStorage.getItem('library'));
+   locale.forEach((book, index) => {
     node.appendChild(addDiv(book.title));
     let newDiv = document.getElementById(book.title);
     AddInfo(newDiv,book, index)
