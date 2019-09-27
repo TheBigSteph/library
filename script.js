@@ -35,10 +35,20 @@ function addBookToLibrary() {
 }
 
 function removeBookFromLibrary(index) {
-  myLibrary.splice(index,1);
-  resetDivbyId('library');
+  console.log(index);
+  const items = JSON.parse(localStorage.getItem("library"));
+  for (var i =0; i< items.length; i++) {
+    const item = JSON.parse(items[i]);
+    if (i == index) {
+        item.splice(i, 1);
+    }
+}
+items = JSON.stringify(items);
+localStorage.setItem("library", items);
+  // resetDivbyId('library');
   render();
 }
+
 function editBookFromLibrary(index) {
   myLibrary[index].alreadyRead == 'Unread' ? myLibrary[index].alreadyRead = 'Read': myLibrary[index].alreadyRead = 'Unread';
   resetDivbyId('library');
