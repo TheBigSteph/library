@@ -26,13 +26,7 @@ function addBookToLibrary() {
   const read = document.getElementById('read').value;
   const createBook = new Book(title, author, pages, read);
   myLibrary.push(createBook);
-// CODE Stephane
-  // const title = $('#title').val();
-  // const author = $('#author').val();
-  // const pages = $('#pages').val();
-  // const bk = new Book(title, author, pages, alreadyRead=false);
-  // myLibrary.push(bk);
-  // console.log(myLibrary);
+
   resetForm('form-book');
   $('#bookModal').modal('hide')
   render();
@@ -44,7 +38,6 @@ function removeBookFromLibrary(index) {
   render();
 }
 function editBookFromLibrary(index) {
-  // myLibrary[index].alreadyRead == 'Unread' ? myLibrary[index].alreadyRead = 'Read': myLibrary[index].alreadyRead = 'Unread';
   let data = myLibrary[index];
   data.alreadyRead == 'Unread' ? data.alreadyRead = 'Read' : data.alreadyRead = 'Unread';
   // resetDivbyId('library');
@@ -60,9 +53,7 @@ function resetDivbyId(nameId) {
   id.innerHTML = '';
 }
 
-// function resetForm() {
-//   document.getElementById('form-input').reset();
-// }
+
 
 function render(){
   setLocalStorage();
