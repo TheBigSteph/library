@@ -40,7 +40,6 @@ function removeBookFromLibrary(index) {
 function editBookFromLibrary(index) {
   let data = myLibrary[index];
   data.alreadyRead == 'Unread' ? data.alreadyRead = 'Read' : data.alreadyRead = 'Unread';
-  // resetDivbyId('library');
   render();
 }
 
