@@ -1,6 +1,3 @@
-/*global someFunction, a*/
-/*eslint no-undef: "error"*/
-
 const myLibrary = JSON.parse(localStorage.getItem('library')) || [
   { 
     title: '100 Años de Soledad', 
