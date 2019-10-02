@@ -1,15 +1,18 @@
+/*global someFunction, a*/
+/*eslint no-undef: "error"*/
+
 const myLibrary = JSON.parse(localStorage.getItem('library')) || [
   { 
     title: '100 Años de Soledad', 
     author: 'Gabriel García Márquez', 
     numberOfPages: 471, 
-    alreadyRead: 'Read' 
+    alreadyRead: 'Read', 
   }, 
   { 
     title: 'El Túnel', 
     author: 'Ernesto Sábato', 
     numberOfPages: 471, 
-    alreadyRead: 'Unread' 
+    alreadyRead: 'Unread', 
   },
   { 
     title: 'El Coronel no tiene quien le escriba',
@@ -61,7 +64,6 @@ function render() {
   setLocalStorage();
   const node = document.getElementById('library');
   const dataBookStorage = JSON.parse(localStorage.getItem('library'));
-  console.log(dataBookStorage);
   dataBookStorage.forEach((book, index) => {
     node.appendChild(addDiv(book.title));
     const newDiv = document.getElementById(book.title);
