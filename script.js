@@ -1,22 +1,33 @@
-let myLibrary = JSON.parse(localStorage.getItem('library')) || [{title: '100 Años de Soledad', author: 'Gabriel García Márquez', numberOfPages: 471, alreadyRead: 'Read'}, 
-{title: 'El Túnel', author: 'Ernesto Sábato', numberOfPages: 471, alreadyRead: "Unread"},
-{title: 'El Coronel no tiene quien le escriba', author: 'Ernesto Sábato', numberOfPages: 471, alreadyRead: "Read"}];
+const myLibrary = JSON.parse(localStorage.getItem('library')) || [{ title: '100 Años de Soledad', author: 'Gabriel García Márquez', numberOfPages: 471, alreadyRead: 'Read' }, 
+{ title: 'El Túnel', author: 'Ernesto Sábato', numberOfPages: 471, alreadyRead: "Unread" },
+{ title: 'El Coronel no tiene quien le escriba', author: 'Ernesto Sábato', numberOfPages: 471, alreadyRead: "Read" }];
 
-const BookAdd = document.getElementById('add-book');
-
-function Book( title, author, numberOfPages, alreadyRead="Unread") {
+function Book( title, author, numberOfPages, alreadyRead = 'Unread' ) {
     this.title = title;
     this.author = author;
     this.numberOfPages = numberOfPages;
     this.alreadyRead = alreadyRead;
-  }
-
- 
+}
 
 function setLocalStorage() {
   localStorage.setItem('library', JSON.stringify(myLibrary));
 }
 
+function render() {
+  setLocalStorage();
+   let node = document.getElementById('library');
+   let dataBookStorage = JSON.parse(localStorage.getItem('library'));
+   console.log(dataBookStorage);
+   dataBookStorage.forEach((book, index) => {
+    node.appendChild(addDiv(book.title));
+    let newDiv = document.getElementById(book.title);
+    AddInfo(newDiv, book, index);
+   });
+}
+
+function resetForm(nameId) {
+  document.getElementById(nameId).reset();
+}
 
 function addBookToLibrary() {
   resetDivbyId('library');
@@ -32,39 +43,21 @@ function addBookToLibrary() {
   render();
 }
 
+function resetDivbyId(nameId) {
+  const id = document.getElementById(nameId);
+  id.innerHTML = '';
+}
+
 function removeBookFromLibrary(index) {
   myLibrary.splice(index,1);
   resetDivbyId('library');
   render();
 }
+
 function editBookFromLibrary(index) {
   let data = myLibrary[index];
-  data.alreadyRead == 'Unread' ? data.alreadyRead = 'Read' : data.alreadyRead = 'Unread';
+  data.alreadyRead === 'Unread' ? data.alreadyRead = 'Read' : data.alreadyRead = 'Unread';
   render();
-}
-
-function resetForm(nameId) {
-  document.getElementById(nameId).reset();
-}
-
-function resetDivbyId(nameId) {
-  let id = document.getElementById(nameId);
-  id.innerHTML = '';
-}
-
-
-
-function render(){
-  setLocalStorage();
-   let node = document.getElementById('library');
-   let dataBookStorage = JSON.parse(localStorage.getItem('library'));
-   console.log(dataBookStorage);
-   dataBookStorage.forEach((book, index) => {
-    node.appendChild(addDiv(book.title));
-    let newDiv = document.getElementById(book.title);
-    AddInfo(newDiv,book, index);
-   });
- 
 }
 
 function AddInfo(div, book, index){
@@ -86,14 +79,11 @@ function AddInfo(div, book, index){
   </div>`;
 }
 
-
-
-function addDiv(id= ""){
+function addDiv(id = ""){
   let createDiv = document.createElement('div');
   createDiv.className = "col-md-4";
   createDiv.id = id;
   return createDiv;
 }
-
 
 render();
