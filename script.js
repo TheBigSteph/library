@@ -1,12 +1,21 @@
 const myLibrary = JSON.parse(localStorage.getItem('library')) || [
   { 
-    title: '100 Años de Soledad', author: 'Gabriel García Márquez', numberOfPages: 471, alreadyRead: 'Read' 
+    title: '100 Años de Soledad', 
+    author: 'Gabriel García Márquez', 
+    numberOfPages: 471, 
+    alreadyRead: 'Read' 
   }, 
   { 
-    title: 'El Túnel', author: 'Ernesto Sábato', numberOfPages: 471, alreadyRead: "Unread" 
+    title: 'El Túnel', 
+    author: 'Ernesto Sábato', 
+    numberOfPages: 471, 
+    alreadyRead: 'Unread' 
   },
   { 
-    title: 'El Coronel no tiene quien le escriba', author: 'Ernesto Sábato', numberOfPages: 471, alreadyRead: "Read" 
+    title: 'El Coronel no tiene quien le escriba',
+    author: 'Ernesto Sábato',
+    numberOfPages: 471, 
+    alreadyRead: 'Read'
   }
 ];
 
@@ -21,15 +30,15 @@ function setLocalStorage() {
   localStorage.setItem('library', JSON.stringify(myLibrary));
 }
 
-function addDiv(id = ""){
-  let createDiv = document.createElement('div');
+function addDiv(id = ''){
+  const createDiv = document.createElement('div');
   createDiv.className = "col-md-4";
   createDiv.id = id;
   return createDiv;
 }
 
 
-function AddInfo(div, book, index){
+function AddInfo(div, book, index) {
   div.innerHTML = `
     <div class="card mb-4 shadow-sm">
       <div class="card-body">
@@ -72,7 +81,6 @@ function addBookToLibrary() {
   const read = document.getElementById('read').value;
   const createBook = new Book(title, author, pages, read);
   myLibrary.push(createBook);
-
   resetForm('form-book');
   $('#bookModal').modal('hide');
   render();
