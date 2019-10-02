@@ -16,10 +16,10 @@ const myLibrary = JSON.parse(localStorage.getItem('library')) || [
     author: 'Ernesto Sábato',
     numberOfPages: 471, 
     alreadyRead: 'Read'
-  }
+  },
 ];
 
-function Book( title, author, numberOfPages, alreadyRead = 'Unread' ) {
+function Book(title, author, numberOfPages, alreadyRead = 'Unread') {
     this.title = title;
     this.author = author;
     this.numberOfPages = numberOfPages;
@@ -30,9 +30,9 @@ function setLocalStorage() {
   localStorage.setItem('library', JSON.stringify(myLibrary));
 }
 
-function addDiv(id = ''){
+function addDiv(id = '') {
   const createDiv = document.createElement('div');
-  createDiv.className = "col-md-4";
+  createDiv.className = 'col-md-4';
   createDiv.id = id;
   return createDiv;
 }
@@ -59,14 +59,14 @@ function AddInfo(div, book, index) {
 
 function render() {
   setLocalStorage();
-   const node = document.getElementById('library');
-   const dataBookStorage = JSON.parse(localStorage.getItem('library'));
-   console.log(dataBookStorage);
-   dataBookStorage.forEach((book, index) => {
+  const node = document.getElementById('library');
+  const dataBookStorage = JSON.parse(localStorage.getItem('library'));
+  console.log(dataBookStorage);
+  dataBookStorage.forEach((book, index) => {
     node.appendChild(addDiv(book.title));
     const newDiv = document.getElementById(book.title);
     AddInfo(newDiv, book, index);
-   });
+  });
 }
 
 function resetForm(nameId) {
