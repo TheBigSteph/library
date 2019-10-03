@@ -13,7 +13,7 @@ const myLibrary = JSON.parse(localStorage.getItem('library')) || [
   },
   { 
     title: 'El Coronel no tiene quien le escriba',
-    author: 'Ernesto Sábato',
+    author: 'Gabriel García Márquez',
     numberOfPages: 471, 
     alreadyRead: 'Read',
   },

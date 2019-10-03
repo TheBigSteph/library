@@ -1,3 +1,5 @@
-MICROVERSE PROJECT LIBRARY
+Microverse Javascript Library Project
 
-# Development Branch
+Author: <a href="https://github.com/danmontielh">Daniel Montiel</a> / <a href="https://github.com/TheBigSteph">Stephane Nzali</a>
+
+Preview: Coming!
